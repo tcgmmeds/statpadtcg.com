@@ -3,18 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mugi — Terms of Service</title>
+    <title>Statpad TCG — Terms of Service</title>
+    <meta name="theme-color" content="#0a0a0b">
+    <link rel="icon" href="favicon.ico" sizes="48x48">
+    <link rel="icon" type="image/png" sizes="192x192" href="favicon.png">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Space+Mono:wght@700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: #000000;
-            --surface: #111111;
-            --border: #1a1a1a;
-            --text: #e0e0e0;
-            --text-muted: #888888;
-            --accent: #9B59B6;
-            --accent-dim: rgba(155, 89, 182, 0.15);
+            --bg: #0a0a0b;
+            --surface: #131314;
+            --border: #232326;
+            --text: #e4e2dc;
+            --text-muted: #8a867c;
+            --accent: #D9B65D;
+            --accent-dim: rgba(217, 182, 93, 0.14);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -37,10 +41,10 @@
 
         .header {
             border-bottom: 1px solid var(--border);
-            padding: 24px 0;
+            padding: 20px 0;
             position: sticky;
             top: 0;
-            background: rgba(0,0,0,0.85);
+            background: rgba(10, 10, 11, 0.85);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             z-index: 50;
@@ -53,18 +57,25 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
+            gap: 16px;
         }
 
         .logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
             font-family: 'Space Mono', monospace;
-            font-size: 20px;
+            font-size: 18px;
             font-weight: 700;
             color: #ffffff;
             text-decoration: none;
-            letter-spacing: -0.5px;
+            letter-spacing: 1px;
+            white-space: nowrap;
         }
 
-        .logo span { color: var(--accent); }
+        .logo:hover { text-decoration: none; }
+        .logo img { width: 30px; height: 30px; display: block; }
+        .logo .tcg { color: var(--accent); }
 
         .badge {
             font-size: 11px;
@@ -145,11 +156,20 @@
 
         .footer {
             border-top: 1px solid var(--border);
-            padding: 32px 0;
+            padding: 32px 24px;
             text-align: center;
             color: var(--text-muted);
             font-size: 13px;
         }
+
+        .footer p {
+            color: var(--text-muted);
+            font-size: 13px;
+            max-width: 640px;
+            margin: 0 auto 8px;
+        }
+
+        .footer p:last-child { margin-bottom: 0; }
 
         @media (max-width: 600px) {
             h1 { font-size: 28px; }
@@ -162,23 +182,26 @@
 
     <div class="header">
         <div class="header-inner">
-            <a href="/" class="logo">MUGI<span>.</span></a>
+            <a href="/" class="logo">
+                <img src="assets/logo-320.png" alt="" width="30" height="30">
+                <span>STATPAD <span class="tcg">TCG</span></span>
+            </a>
             <span class="badge">Legal</span>
         </div>
     </div>
 
     <div class="container">
         <h1>Terms of Service</h1>
-        <p class="effective-date">Effective date: March 1, 2026</p>
+        <p class="effective-date">Effective date: November 14, 2026</p>
 
         <h2>Acceptance of Terms</h2>
-        <p>By downloading, installing, or using the Mugi app ("the App"), you agree to be bound by these Terms of Service ("Terms"). If you do not agree to these Terms, do not use the App.</p>
+        <p>By downloading, installing, or using the Statpad TCG app ("the App"), you agree to be bound by these Terms of Service ("Terms"). If you do not agree to these Terms, do not use the App.</p>
 
         <h2>Description of Service</h2>
-        <p>Mugi is a mobile application that allows users to track their One Piece Trading Card Game collections, build decks, trade cards with friends, log tournament matches, and engage with a community of collectors. Mugi is not an official Bandai Namco product and is not affiliated with Bandai Namco, Toei Animation, Shueisha, or Eiichiro Oda.</p>
+        <p>Statpad TCG is a mobile application for One Piece Card Game players. It allows users to track their card collections, build decks, log tournaments and matches, keep a wishlist, and engage with a community of collectors.</p>
 
         <h2>User Accounts</h2>
-        <p>To use Mugi, you must create an account with a valid email address and a username. You are responsible for maintaining the security of your account and for all activities that occur under your account. You must not create accounts for the purpose of abusing the app's functionality or other users.</p>
+        <p>To use Statpad TCG, you must create an account with a valid email address and a username. You are responsible for maintaining the security of your account and for all activities that occur under your account. You must not create accounts for the purpose of abusing the app's functionality or other users.</p>
 
         <h2>Acceptable Use</h2>
         <p>You agree not to:</p>
@@ -187,23 +210,21 @@
             <li>Impersonate any person or entity</li>
             <li>Spam, scam, or deceive other users</li>
             <li>Attempt to gain unauthorized access to the App's systems or other users' accounts</li>
-            <li>Use the App to facilitate real-money transactions (all trades within the App are for tracking purposes only)</li>
+            <li>Use the App to facilitate real-money transactions</li>
             <li>Use automated tools, bots, or scrapers to access or interact with the App</li>
             <li>Interfere with or disrupt the App or its infrastructure</li>
         </ul>
 
         <h2>User Content</h2>
-        <p>You retain ownership of the content you create within the App (posts, comments, stories, deck lists). By posting content, you grant Mugi a non-exclusive, royalty-free license to display that content within the App to other users. You are solely responsible for the content you post.</p>
-
-        <h2>Trading</h2>
-        <p>The trade feature in Mugi is a tool for organizing and tracking card trades between users. Mugi does not facilitate, guarantee, or mediate any physical exchange of cards. All physical trades are conducted at the sole risk and discretion of the users involved. Mugi is not responsible for any disputes, losses, or damages arising from trades between users.</p>
+        <p>You retain ownership of the content you create within the App (posts, comments, stories, deck lists). By posting content, you grant Statpad TCG a non-exclusive, royalty-free license to display that content within the App to other users. You are solely responsible for the content you post.</p>
 
         <h2>Card Data and Prices</h2>
-        <p>Card information, images, and market prices displayed in the App are sourced from third-party providers and are provided for informational purposes only. Prices may not reflect current market conditions. Mugi does not guarantee the accuracy, completeness, or timeliness of any pricing data.</p>
+        <p>Card information, images, and market prices displayed in the App are sourced from third-party providers and are provided for informational purposes only. Prices may not reflect current market conditions. Statpad TCG does not guarantee the accuracy, completeness, or timeliness of any pricing data.</p>
 
         <h2>Intellectual Property</h2>
-        <p>One Piece and all related characters, names, and indicia are trademarks of Toei Animation, Shueisha, and Eiichiro Oda. One Piece Card Game is a trademark of Bandai Namco. Card images are the property of their respective owners. Mugi claims no ownership of any One Piece or Bandai Namco intellectual property.</p>
-        <p>The Mugi app, its code, design, and branding are the property of tcgmmeds. All rights reserved.</p>
+        <p>Statpad TCG is an unofficial fan-made app. It is not affiliated with, endorsed by, or sponsored by Bandai or the One Piece franchise. Card names and images belong to their respective owners.</p>
+        <p>One Piece and all related characters, names, and indicia are trademarks of Toei Animation, Shueisha, and Eiichiro Oda. One Piece Card Game is a trademark of Bandai. Statpad TCG claims no ownership of any One Piece or Bandai intellectual property.</p>
+        <p>The Statpad TCG app, its code, design, and branding are the property of tcgmmeds. All rights reserved.</p>
 
         <h2>Termination</h2>
         <p>We reserve the right to suspend or terminate your account at any time if you violate these Terms or engage in behavior that is harmful to other users or the App. You may delete your account at any time through the Settings menu.</p>
@@ -212,7 +233,7 @@
         <p>The App is provided "as is" and "as available" without warranties of any kind, either express or implied. We do not warrant that the App will be uninterrupted, error-free, or free of harmful components.</p>
 
         <h2>Limitation of Liability</h2>
-        <p>To the maximum extent permitted by law, Mugi and its developer shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from your use of the App.</p>
+        <p>To the maximum extent permitted by law, Statpad TCG and its developer shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from your use of the App.</p>
 
         <h2>Changes to Terms</h2>
         <p>We may update these Terms from time to time. Changes will be reflected by updating the effective date at the top. Continued use of the App after changes constitutes acceptance of the updated Terms.</p>
@@ -220,12 +241,13 @@
         <h2>Contact</h2>
         <div class="contact-box">
             <p>If you have questions about these Terms, contact us at:</p>
-            <p><a href="mailto:support@mugiapp.app">support@mugiapp.app</a></p>
+            <p><a href="mailto:support@statpadtcg.com">support@statpadtcg.com</a></p>
         </div>
     </div>
 
     <div class="footer">
-        <p>&copy; 2026 Mugi. All rights reserved. Not affiliated with Bandai Namco, Toei Animation, Shueisha, or Eiichiro Oda.</p>
+        <p>&copy; 2026 Statpad TCG. All rights reserved.</p>
+        <p>Statpad TCG is an unofficial fan-made app. It is not affiliated with, endorsed by, or sponsored by Bandai or the One Piece franchise. Card names and images belong to their respective owners.</p>
     </div>
 </body>
 </html>
