@@ -12,6 +12,7 @@ It is plain HTML, CSS and JavaScript. There is nothing to install or build: each
 | `privacy.html` | `/privacy` | Privacy Policy |
 | `terms.html` | `/terms` | Terms of Service |
 | `reset-password.html` | `/reset-password` | Lets someone set a new password from the link in a reset email |
+| `delete-account.html` | `/delete-account` | Explains how to ask for an account and its data to be deleted (the app stores ask for this page) |
 
 ## Other files
 
