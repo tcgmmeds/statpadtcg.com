@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mugi — Delete Account</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Space+Mono:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #000000;
+            --surface: #111111;
+            --border: #1a1a1a;
+            --text: #e0e0e0;
+            --text-muted: #888888;
+            --accent: #9B59B6;
+            --accent-dim: rgba(155, 89, 182, 0.15);
+            --warning: #ff6b6b;
+            --warning-dim: rgba(255, 107, 107, 0.1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'DM Sans', -apple-system, sans-serif;
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .grain {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 100;
+        }
+
+        .header {
+            border-bottom: 1px solid var(--border);
+            padding: 24px 0;
+            position: sticky;
+            top: 0;
+            background: rgba(0,0,0,0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            z-index: 50;
+        }
+
+        .header-inner {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-family: 'Space Mono', monospace;
+            font-size: 20px;
+            font-weight: 700;
+            color: #ffffff;
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+
+        .logo span { color: var(--accent); }
+
+        .badge {
+            font-size: 11px;
+            font-weight: 500;
+            color: var(--accent);
+            background: var(--accent-dim);
+            padding: 4px 10px;
+            border-radius: 20px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .container {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 64px 24px 120px;
+        }
+
+        h1 {
+            font-family: 'Space Mono', monospace;
+            font-size: 36px;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 16px;
+            letter-spacing: -1px;
+        }
+
+        .intro {
+            color: var(--text-muted);
+            font-size: 15px;
+            margin-bottom: 40px;
+        }
+
+        h2 {
+            font-size: 18px;
+            font-weight: 700;
+            color: #ffffff;
+            margin-top: 40px;
+            margin-bottom: 12px;
+            padding-top: 24px;
+            border-top: 1px solid var(--border);
+        }
+
+        h2:first-of-type { border-top: none; padding-top: 0; margin-top: 0; }
+
+        p {
+            margin-bottom: 16px;
+            color: var(--text);
+            font-size: 15px;
+        }
+
+        ul {
+            margin: 0 0 16px 0;
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 8px;
+            font-size: 15px;
+            color: var(--text);
+        }
+
+        li::marker { color: var(--accent); }
+
+        a { color: var(--accent); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        .warning-box {
+            background: var(--warning-dim);
+            border: 1px solid rgba(255, 107, 107, 0.3);
+            border-radius: 12px;
+            padding: 20px 24px;
+            margin: 32px 0;
+        }
+
+        .warning-box p {
+            margin-bottom: 0;
+            color: var(--warning);
+            font-weight: 500;
+            font-size: 15px;
+        }
+
+        .contact-box {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-top: 32px;
+        }
+
+        .contact-box p:last-child { margin-bottom: 0; }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 48px;
+            padding: 12px 20px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text);
+            font-size: 14px;
+            font-weight: 500;
+            transition: border-color 0.2s, color 0.2s;
+        }
+
+        .back-link:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .footer {
+            border-top: 1px solid var(--border);
+            padding: 32px 0;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 13px;
+        }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 28px; }
+            .container { padding: 40px 20px 80px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="grain"></div>
+
+    <div class="header">
+        <div class="header-inner">
+            <a href="/" class="logo">MUGI<span>.</span></a>
+            <span class="badge">Account</span>
+        </div>
+    </div>
+
+    <div class="container">
+        <h1>Delete Your Mugi Account</h1>
+        <p class="intro">We're sorry to see you go. This page explains how to permanently delete your Mugi account and what data will be removed.</p>
+
+        <h2>What Will Be Deleted</h2>
+        <p>Deleting your account will permanently remove:</p>
+        <ul>
+            <li>Your profile and account info</li>
+            <li>Your collection, binders, and decks</li>
+            <li>Your trade history and wanted list</li>
+            <li>Your messages and conversations</li>
+            <li>Your tournament match history</li>
+            <li>Your social feed posts and stories</li>
+        </ul>
+
+        <div class="warning-box">
+            <p>This action is permanent and cannot be undone.</p>
+        </div>
+
+        <h2>How to Request Deletion</h2>
+        <div class="contact-box">
+            <p>To request account deletion, email us at <a href="mailto:support@mugiapp.app?subject=Account%20Deletion%20Request">support@mugiapp.app</a> with the subject <strong>"Account Deletion Request"</strong> and include the email address associated with your account.</p>
+            <p>We'll process your request and confirm once your account and associated data have been permanently removed.</p>
+        </div>
+
+        <a href="/" class="back-link">← Back to Mugi</a>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2026 Mugi. All rights reserved. Not affiliated with Bandai Namco, Toei Animation, Shueisha, or Eiichiro Oda.</p>
+    </div>
+</body>
+</html>
