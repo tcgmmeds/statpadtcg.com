@@ -558,7 +558,35 @@
             justify-content: center;
             gap: 8px;
         }
-        .form-message.success { display: flex; color: var(--green-400); }
+        .form-message.success { display: flex; flex-direction: column; gap: 16px; color: var(--green-400); }
+        /* The tick and the sentence next to it */
+        .success-line {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-align: left;
+        }
+        .success-line svg { flex-shrink: 0; }
+        /* The beta link, shown only after a successful signup.
+           Outlined and small, so it reads as a second, optional step. */
+        .beta-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 9px 16px;
+            background: var(--accent-soft);
+            border: 1px solid var(--accent-line);
+            border-radius: 10px;
+            color: var(--accent);
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        .beta-link:hover {
+            background: rgba(217, 182, 93, 0.16);
+            border-color: rgba(217, 182, 93, 0.36);
+        }
         .form-message.error { display: flex; color: #f87171; }
         .waitlist-note {
             margin-top: 16px;
@@ -821,7 +849,11 @@
                     form.style.display = 'none';
                     document.querySelector('.waitlist-note').style.display = 'none';
                     msg.className = 'form-message success';
-                    msg.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> You\'re on the Statpad TCG waitlist. We\'ll email you at launch.';
+                    // Two parts: the confirmation, then the optional beta link.
+                    // The link is only ever written here, so it can't show before a signup works.
+                    msg.innerHTML =
+                        '<span class="success-line"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> You\'re on the list! We\'ll email you when Statpad TCG hits the App Store.</span>' +
+                        '<a class="beta-link" href="https://testflight.apple.com/join/HM2dcsnP" target="_blank" rel="noopener">Want in early? Join the iOS beta <span aria-hidden="true">→</span></a>';
                 } else {
                     msg.className = 'form-message error';
                     msg.textContent = 'Something went wrong. Try again.';
