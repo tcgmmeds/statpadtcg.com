@@ -26,7 +26,10 @@ Plain HTML, CSS and JavaScript. No build step; each page holds its own styles an
 - No TestFlight links.
 
 ## TODO
--
+- At App Store release: replace "Coming soon to iOS" with the App Store link (still no Android mention).
+- At launch: add the trailer to the site.
+- Check the waitlist success message in a browser after the TestFlight removal.
+- Review the old `feature/*` and `fix/mailchimp-jsonp` branches on the remote and delete any that are already merged.
 
 ## Known issues
 -
@@ -34,3 +37,4 @@ Plain HTML, CSS and JavaScript. No build step; each page holds its own styles an
 ## Session log
 - 2026-11-23: Created this project doc.
 - 2026-11-23: Removed all TestFlight links and mentions from the site.
+- 2026-11-23: Deleted the already-merged `feature/testflight-button` branch from the remote. Updated the TODO.
