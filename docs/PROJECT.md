@@ -33,3 +33,4 @@ Plain HTML, CSS and JavaScript. No build step; each page holds its own styles an
 
 ## Session log
 - 2026-11-23: Created this project doc.
+- 2026-11-23: Removed all TestFlight links and mentions from the site.
