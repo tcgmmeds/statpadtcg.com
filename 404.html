@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page not found — Statpad TCG</title>
+    <meta name="theme-color" content="#0a0a0b">
+    <meta name="robots" content="noindex">
+    <link rel="icon" href="/favicon.ico" sizes="48x48">
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bg-primary: #0a0a0b;
+            --bg-card: #131314;
+            --accent: #D9B65D;
+            --accent-light: #E8CE8C;
+            --accent-soft: rgba(217, 182, 93, 0.10);
+            --accent-line: rgba(217, 182, 93, 0.22);
+            --on-accent: #0a0a0b;
+            --text-primary: #f3f1ea;
+            --text-secondary: #a8a49a;
+            --text-muted: #8a867c;
+            --border: #232326;
+        }
+        body {
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            font-family: 'DM Sans', system-ui, sans-serif;
+            line-height: 1.6;
+            min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
+            background-image: radial-gradient(circle at 50% -10%, rgba(217,182,93,0.13), transparent 55%);
+            background-repeat: no-repeat;
+        }
+        .container { max-width: 720px; margin: 0 auto; padding: 40px 24px 64px; }
+        .brand { display: block; text-align: center; color: var(--accent); font-family: 'Space Mono', monospace; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; font-size: 14px; text-decoration: none; margin-bottom: 36px; }
+        h1 { font-size: 26px; line-height: 1.2; margin-bottom: 6px; word-break: break-word; }
+        .head { background: var(--bg-card); border: 1px solid var(--accent-line); border-radius: 16px; padding: 20px 18px; box-shadow: 0 0 40px rgba(217,182,93,0.06); }
+        .eyebrow { font-family: 'Space Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: .14em; color: var(--accent); margin-bottom: 8px; }
+        .leader-name { color: var(--text-secondary); font-size: 16px; }
+        .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+        .chip { display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; border-radius: 999px; border: 1px solid var(--border); font-size: 13px; color: var(--text-secondary); }
+        .chip.count { border-color: var(--accent-line); background: var(--accent-soft); color: var(--accent-light); }
+        .muted { color: var(--text-secondary); }
+        .center { text-align: center; padding-top: 40px; }
+        .center h1 { font-size: 40px; color: var(--accent); }
+        .center p { margin: 12px 0 28px; }
+        .meta { color: var(--text-secondary); margin-bottom: 24px; }
+        .meta strong { color: var(--text-primary); font-weight: 600; }
+        .actions { display: flex; gap: 12px; flex-wrap: wrap; margin: 20px 0 24px; }
+        .btn { display: inline-block; padding: 12px 22px; border-radius: 10px; font-weight: 600; text-decoration: none; font-size: 15px; border: 1px solid var(--accent-line); color: var(--accent-light); background: var(--accent-soft); }
+        .btn.primary { background: var(--accent); color: var(--on-accent); border-color: var(--accent); }
+        .btn:hover { filter: brightness(1.1); }
+        button.btn { font: inherit; font-weight: 600; font-size: 15px; cursor: pointer; }
+        .group { background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px; margin-bottom: 16px; overflow: hidden; }
+        .group h2 { font-size: 13px; font-family: 'Space Mono', monospace; text-transform: uppercase; letter-spacing: .1em; color: var(--accent); padding: 12px 16px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; }
+        .row { display: flex; align-items: center; gap: 12px; padding: 10px 16px; border-bottom: 1px solid var(--border); }
+        .row:last-child { border-bottom: 0; }
+        .qty { font-family: 'Space Mono', monospace; color: var(--accent-light); min-width: 28px; }
+        .name { flex: 1; min-width: 0; word-break: break-word; }
+        .id { color: var(--text-muted); font-size: 12px; font-family: 'Space Mono', monospace; }
+        .dots { display: inline-flex; gap: 3px; flex: none; vertical-align: middle; }
+        .cost { color: var(--accent-light); font-family: 'Space Mono', monospace; font-size: 13px; min-width: 26px; height: 26px; line-height: 24px; text-align: center; border: 1px solid var(--accent-line); border-radius: 50%; flex: none; }
+        @media (max-width: 480px) {
+            .container { padding: 24px 16px 48px; }
+            .actions { margin: 16px 0 20px; }
+            .actions .btn { flex: 1 1 100%; text-align: center; padding: 14px 22px; }
+            .row { padding: 12px 14px; gap: 10px; }
+        }
+        .dot { width: 10px; height: 10px; border-radius: 50%; border: 1px solid rgba(255,255,255,.25); flex: none; }
+        .note { color: var(--text-muted); font-size: 13px; margin-top: 8px; }
+        [hidden] { display: none !important; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a class="brand" href="/">Statpad TCG</a>
+
+    <!-- Normal 404 (shown unless the path is a deck share link) -->
+    <div id="notfound" class="center">
+        <h1>404</h1>
+        <p class="muted">That page doesn't exist.</p>
+        <a class="btn primary" href="/">Back to Statpad TCG</a>
+    </div>
+
+    <!-- Deck share view -->
+    <div id="deck" hidden>
+        <div id="status" class="muted center">Loading deck…</div>
+        <div id="content" hidden></div>
+    </div>
+</div>
+
+<script src="/config.js"></script>
+<script>
+(function () {
+    "use strict";
+
+    var match = /^\/d\/([^\/]+)\/?$/.exec(location.pathname);
+    var shareId = match ? match[1] : null;
+    if (!shareId || !/^[A-Za-z0-9_-]{8,32}$/.test(shareId)) return; // keep normal 404
+
+    document.title = "Shared deck — Statpad TCG";
+    document.getElementById("notfound").hidden = true;
+    document.getElementById("deck").hidden = false;
+
+    var statusEl = document.getElementById("status");
+    var contentEl = document.getElementById("content");
+
+    // Safe text: build DOM nodes with textContent, never innerHTML with user data.
+    function el(tag, cls, text) {
+        var n = document.createElement(tag);
+        if (cls) n.className = cls;
+        if (text !== undefined && text !== null) n.textContent = String(text);
+        return n;
+    }
+    function link(cls, text, href) {
+        var a = el("a", cls, text);
+        a.href = href;
+        return a;
+    }
+    function fail(msg) {
+        statusEl.textContent = msg;
+        statusEl.hidden = false;
+        contentEl.hidden = true;
+        var wrap = el("div", "actions");
+        wrap.style.justifyContent = "center";
+        wrap.appendChild(link("btn primary", "Get Statpad", "/"));
+        statusEl.appendChild(wrap);
+    }
+
+    // Colors are only used to pick a dot color; unknown values fall back to grey.
+    var COLORS = { red: "#e5484d", green: "#30a46c", blue: "#3e63dd", purple: "#8e4ec6", black: "#2b2b2f", yellow: "#f5d90a" };
+    // One dot per color, so "Green/Yellow" or "Blue Purple" shows two dots.
+    function colorDot(color) {
+        var wrap = el("span", "dots");
+        var parts = String(color || "").toLowerCase().split(/[\/ ,]+/).filter(Boolean);
+        if (!parts.length) parts = ["?"];
+        parts.forEach(function (p) {
+            var d = el("span", "dot");
+            d.style.background = COLORS[p] || "#6b6b72";
+            wrap.appendChild(d);
+        });
+        wrap.title = color ? String(color) : "";
+        return wrap;
+    }
+
+    var TYPE_ORDER = ["leader", "character", "event", "stage", "don", "other"];
+    function typeKey(t) {
+        t = String(t || "other").toLowerCase();
+        return TYPE_ORDER.indexOf(t) === -1 ? t : t;
+    }
+
+    // RPC shape: { name, leader_card_id, cards: [{ card_image_id, quantity }] } or null
+    function normaliseDeck(d) {
+        if (!d || typeof d !== "object") return null;
+        var entries = [];
+        (Array.isArray(d.cards) ? d.cards : []).forEach(function (c) {
+            if (c && c.card_image_id) entries.push({ id: String(c.card_image_id), qty: Number(c.quantity) || 1 });
+        });
+        return {
+            name: typeof d.name === "string" && d.name ? d.name : "Untitled deck",
+            leader: d.leader_card_id ? String(d.leader_card_id) : null,
+            entries: entries
+        };
+    }
+
+    // cards.json: { fields: ["name","color","type","cost","set"], cards: { "OP01-077": [name, color, type, cost, set] } }
+    // Keyed by base id only (variants like _p1 / _rpp are resolved in render()).
+    // Colors are "Red", "Blue Purple" or "Green/Yellow"; cost is null for leaders.
+    function indexCards(data) {
+        if (!data || typeof data !== "object" || !data.cards || typeof data.cards !== "object") return null;
+        var fields = Array.isArray(data.fields) ? data.fields : ["name", "color", "type", "cost", "set"];
+        var idx = {};
+        Object.keys(data.cards).forEach(function (id) {
+            var row = data.cards[id];
+            if (!Array.isArray(row)) return;
+            var c = {};
+            fields.forEach(function (f, i) { c[f] = row[i]; });
+            idx[id] = c;
+        });
+        return idx;
+    }
+
+    // Fallback for browsers/contexts without the async clipboard API
+    function legacyCopy(text) {
+        var ta = document.createElement("textarea");
+        ta.value = text;
+        ta.style.position = "fixed";
+        ta.style.opacity = "0";
+        document.body.appendChild(ta);
+        ta.select();
+        var ok = false;
+        try { ok = document.execCommand("copy"); } catch (e) {}
+        document.body.removeChild(ta);
+        return ok;
+    }
+
+    function render(deck, cards) {
+        contentEl.textContent = "";
+        // Exact id first ("OP05-077_p1"), then base id ("OP05-077")
+        var known = function (id) {
+            if (!cards || !id) return null;
+            if (cards[id]) return cards[id];
+            var base = id.split("_")[0];
+            return cards[base] || null;
+        };
+
+        var total = deck.entries.reduce(function (s, e) { return s + e.qty; }, 0);
+
+        // Header card: deck name, leader, leader colors, card count
+        var head = el("header", "head");
+        head.appendChild(el("div", "eyebrow", "Shared deck"));
+        head.appendChild(el("h1", null, deck.name));
+        var lc = deck.leader ? known(deck.leader) : null;
+        if (deck.leader) {
+            var lrow = el("div", "leader");
+            lrow.appendChild(el("span", "leader-name", lc && lc.name ? lc.name : deck.leader));
+            head.appendChild(lrow);
+        }
+        var chips = el("div", "chips");
+        if (lc && lc.color) {
+            String(lc.color).split(/[\/ ,]+/).filter(Boolean).forEach(function (col) {
+                var chip = el("span", "chip");
+                chip.appendChild(colorDot(col));
+                chip.appendChild(el("span", null, col));
+                chips.appendChild(chip);
+            });
+        }
+        chips.appendChild(el("span", "chip count", total + (total === 1 ? " card" : " cards")));
+        head.appendChild(chips);
+        contentEl.appendChild(head);
+
+        var actions = el("div", "actions");
+        actions.appendChild(link("btn primary", "Open in Statpad", "statpad://d/" + encodeURIComponent(shareId)));
+        actions.appendChild(link("btn", "Get Statpad", "/"));
+        contentEl.appendChild(actions);
+
+        // Merge art variants (OP13-113 and OP13-113_p1) into one row, then group by type
+        var merged = {};
+        deck.entries.forEach(function (e) {
+            var base = e.id.split("_")[0];
+            if (merged[base]) merged[base].qty += e.qty;
+            else merged[base] = { id: base, qty: e.qty, full: e.id };
+        });
+
+        // "Copy deck list": leader first as 1x, then 4xOP01-001 lines, base ids only
+        var lines = [];
+        if (deck.leader) lines.push("1x" + deck.leader.split("_")[0]);
+        Object.keys(merged).sort().forEach(function (b) { lines.push(merged[b].qty + "x" + b); });
+        var copyBtn = el("button", "btn", "Copy deck list");
+        copyBtn.type = "button";
+        copyBtn.addEventListener("click", function () {
+            var text = lines.join("\n");
+            var done = function () {
+                copyBtn.textContent = "Copied";
+                setTimeout(function () { copyBtn.textContent = "Copy deck list"; }, 2000);
+            };
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(text).then(done, function () { legacyCopy(text) && done(); });
+            } else if (legacyCopy(text)) { done(); }
+        });
+        actions.appendChild(copyBtn);
+
+        var groups = {};
+        Object.keys(merged).forEach(function (b) {
+            var e = merged[b];
+            var c = known(e.full);
+            var t = typeKey(c && c.type);
+            (groups[t] = groups[t] || []).push({ e: e, c: c });
+        });
+        var keys = Object.keys(groups).sort(function (a, b) {
+            var ia = TYPE_ORDER.indexOf(a), ib = TYPE_ORDER.indexOf(b);
+            return (ia === -1 ? 99 : ia) - (ib === -1 ? 99 : ib);
+        });
+        keys.forEach(function (k) {
+            var items = groups[k];
+            var count = items.reduce(function (s, i) { return s + i.e.qty; }, 0);
+            var g = el("section", "group");
+            var h = el("h2");
+            h.appendChild(el("span", null, k));
+            h.appendChild(el("span", null, count));
+            g.appendChild(h);
+            // Cost ascending, then name
+            var costOf = function (i) { return i.c && typeof i.c.cost === "number" ? i.c.cost : 99; };
+            items.sort(function (a, b) {
+                return costOf(a) - costOf(b) || String(a.c ? a.c.name : a.e.id).localeCompare(String(b.c ? b.c.name : b.e.id));
+            });
+            items.forEach(function (i) {
+                var r = el("div", "row");
+                r.appendChild(el("span", "qty", i.e.qty + "×"));
+                r.appendChild(colorDot(i.c && i.c.color));
+                r.appendChild(el("span", "name", i.c && i.c.name ? i.c.name : i.e.id));
+                if (i.c && typeof i.c.cost === "number") r.appendChild(el("span", "cost", i.c.cost));
+                g.appendChild(r);
+            });
+            contentEl.appendChild(g);
+        });
+
+        if (!cards) {
+            contentEl.appendChild(el("p", "note", "Card details aren't available right now, so cards are shown by ID. Open the deck in Statpad to see everything."));
+        }
+
+        statusEl.hidden = true;
+        contentEl.hidden = false;
+    }
+
+    var cfg = window.STATPAD_CONFIG || {};
+    if (!cfg.supabaseUrl || !cfg.supabaseAnonKey || /^PASTE_/.test(cfg.supabaseAnonKey)) {
+        fail("This deck can't be loaded yet (site not configured).");
+        return;
+    }
+
+    var deckReq = fetch(cfg.supabaseUrl + "/rest/v1/rpc/get_shared_deck", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "apikey": cfg.supabaseAnonKey,
+            "Authorization": "Bearer " + cfg.supabaseAnonKey
+        },
+        body: JSON.stringify({ p_share_id: shareId })
+    }).then(function (r) {
+        if (!r.ok) throw new Error("rpc " + r.status);
+        return r.json();
+    });
+
+    // cards.json is optional; any failure resolves to null
+    var cardsReq = fetch("/cards.json", { cache: "no-cache" })
+        .then(function (r) { return r.ok ? r.json() : null; })
+        .then(function (d) { return indexCards(d); })
+        .catch(function () { return null; });
+
+    Promise.all([deckReq, cardsReq]).then(function (res) {
+        var deck = normaliseDeck(res[0]);
+        if (!deck) { fail("This deck link doesn't exist or is no longer shared."); return; }
+        render(deck, res[1]);
+    }).catch(function () {
+        fail("Couldn't load this deck. Please try again later.");
+    });
+})();
+</script>
+</body>
+</html>
