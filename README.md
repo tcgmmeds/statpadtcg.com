@@ -8,7 +8,7 @@ It is plain HTML, CSS and JavaScript. There is nothing to install or build: each
 
 | File | Address | What it is |
 | --- | --- | --- |
-| `index.html` | `/` | Landing page with the waitlist form |
+| `index.html` | `/` | Landing page with the App Store link |
 | `privacy.html` | `/privacy` | Privacy Policy |
 | `terms.html` | `/terms` | Terms of Service |
 | `reset-password.html` | `/reset-password` | Lets someone set a new password from the link in a reset email |
@@ -22,6 +22,7 @@ It is plain HTML, CSS and JavaScript. There is nothing to install or build: each
 | `assets/logo.png` | The logo at full size (1024px), copied from the app |
 | `assets/logo-320.png` | A small copy of the logo. This is the one the pages load, so they stay fast |
 | `assets/og-image.png` | The 1200×630 picture shown when a link to the site is shared in a message or a post |
+| `assets/app-store-badge.svg` | Apple's official "Download on the App Store" badge. Resize it if needed, but don't edit the artwork |
 | `favicon.ico`, `favicon.png` | The icon in the browser tab, made from the app icon |
 | `apple-touch-icon.png` | The icon used when the site is saved to an iPhone home screen |
 
@@ -48,7 +49,7 @@ The colours are set once at the top of each page's `<style>` block.
 
 ## Services the site talks to
 
-- **Mailchimp** receives waitlist sign-ups. The form's address is in the script at the bottom of `index.html` (the `list-manage.com` line).
+- **Apple's App Store** is where the download links point: `https://apps.apple.com/app/id6759857731`. The same app ID is in the Smart App Banner tag in `index.html` and `404.html`.
 - **Supabase** handles the password reset. The project address and public key are in the script at the bottom of `reset-password.html`. It is the same Supabase project the app uses.
 
 ## Publishing

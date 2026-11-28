@@ -6,6 +6,8 @@
     <title>Page not found — Statpad TCG</title>
     <meta name="theme-color" content="#0a0a0b">
     <meta name="robots" content="noindex">
+    <!-- iOS Smart App Banner. Written into the page because Safari reads it while loading. -->
+    <meta name="apple-itunes-app" content="app-id=6759857731">
     <link rel="icon" href="/favicon.ico" sizes="48x48">
     <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -110,6 +112,7 @@
 
     var statusEl = document.getElementById("status");
     var contentEl = document.getElementById("content");
+    var APP_STORE_URL = "https://apps.apple.com/app/id6759857731";
 
     // Safe text: build DOM nodes with textContent, never innerHTML with user data.
     function el(tag, cls, text) {
@@ -129,7 +132,7 @@
         contentEl.hidden = true;
         var wrap = el("div", "actions");
         wrap.style.justifyContent = "center";
-        wrap.appendChild(link("btn primary", "Get Statpad", "/"));
+        wrap.appendChild(link("btn primary", "Get Statpad", APP_STORE_URL));
         statusEl.appendChild(wrap);
     }
 
@@ -237,7 +240,7 @@
 
         var actions = el("div", "actions");
         actions.appendChild(link("btn primary", "Open in Statpad", "statpad://d/" + encodeURIComponent(shareId)));
-        actions.appendChild(link("btn", "Get Statpad", "/"));
+        actions.appendChild(link("btn", "Get Statpad", APP_STORE_URL));
         contentEl.appendChild(actions);
 
         // Merge art variants (OP13-113 and OP13-113_p1) into one row, then group by type
