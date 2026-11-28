@@ -6,6 +6,17 @@
     <title>Page not found — Statpad TCG</title>
     <meta name="theme-color" content="#0a0a0b">
     <meta name="robots" content="noindex">
+    <script>
+    // iOS Smart App Banner, on deck share links only. app-argument hands this deck's
+    // address to the app. It runs here in <head> so the tag exists while the page loads.
+    (function () {
+        if (!/^\/d\/[A-Za-z0-9_-]{8,32}\/?$/.test(location.pathname)) return;
+        var meta = document.createElement("meta");
+        meta.name = "apple-itunes-app";
+        meta.content = "app-id=6759857731, app-argument=" + location.origin + location.pathname;
+        document.head.appendChild(meta);
+    })();
+    </script>
     <link rel="icon" href="/favicon.ico" sizes="48x48">
     <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
