@@ -6,7 +6,7 @@ statpadtcg.com is the marketing site for the Statpad TCG iOS app. It is a static
 ## Stack and structure
 Plain HTML, CSS and JavaScript. No build step; each page holds its own styles and scripts. GitHub Pages publishes `main`.
 
-- `index.html`: landing page with the waitlist form (Mailchimp sign-ups).
+- `index.html`: landing page with the App Store badge and Smart App Banner.
 - `privacy.html`: Privacy Policy.
 - `terms.html`: Terms of Service.
 - `reset-password.html`: lets someone set a new password from a reset email (Supabase).
@@ -14,7 +14,8 @@ Plain HTML, CSS and JavaScript. No build step; each page holds its own styles an
 - `CNAME`: custom domain for GitHub Pages (`statpadtcg.com`).
 - `README.md`: overview, preview instructions, brand notes.
 - `assets/logo.png`, `assets/logo-320.png`: logo at full and small size.
-- `assets/og-image.png`: 1200x630 link-preview image.
+- `assets/og-image.png`: 1200x630 link-preview image. When replacing it, raise the `?v=` number on the image URLs in `index.html` so chat apps fetch the new one.
+- `assets/app-store-badge.svg`: Apple's official App Store badge, shown in the page footers and the homepage hero.
 - `favicon.ico`, `favicon.png`, `apple-touch-icon.png`: site and home-screen icons.
 - `404.html`: GitHub Pages fallback page. For `/d/<share_id>` it renders a shared deck; anything else shows the normal 404.
 - `config.js`: public client config (Supabase URL and publishable key) for `404.html`.
@@ -27,7 +28,8 @@ Plain HTML, CSS and JavaScript. No build step; each page holds its own styles an
 - URL: `https://statpadtcg.com/d/<share_id>`. It is served through `404.html` (the Pages fallback), so the HTTP status is 404 but the page renders. `share_id` must match `^[A-Za-z0-9_-]{8,32}$`; anything else shows the normal 404.
 - The page calls the Supabase RPC `get_shared_deck({ p_share_id })` with the publishable key from `config.js`. Response: `{ name, leader_card_id, cards: [{ card_image_id, quantity }] }`, or `null` ("This deck link doesn't exist or is no longer shared").
 - `cards.json` comes from the app repo (`scripts/exportWebCards.js` writes `web-export/cards.json`). Format: `{ generatedAt, fields, cards: { baseId: [name, color, type, cost, set] } }`. Lookup is by exact id, then base id (everything after `_` stripped).
-- Layout: text only. Header with deck name, leader, color chips and card count; Character/Event/Stage sections sorted by cost then name. Buttons: Open in Statpad (`statpad://d/<id>`), Get Statpad (homepage, "Coming soon to iOS"), Copy deck list (`1x` leader first, then `NxBASEID` lines).
+- Layout: text only. Header with deck name, leader, color chips and card count; Character/Event/Stage sections sorted by cost then name. Buttons: Open in Statpad (`statpad://d/<id>`), Get Statpad (App Store), Copy deck list (`1x` leader first, then `NxBASEID` lines).
+- Smart App Banner: a static `apple-itunes-app` tag (app ID `6759857731`, no `app-argument`) in `404.html` and `index.html`. It is written into the HTML because Safari generally reads it only while the page first loads. Being in `404.html`, it also applies to the normal 404.
 - Universal links: `/.well-known/apple-app-site-association` with appID `NAJBBUUZ42.com.tcgmmeds.onepiecetcg` for `/d/*`. `.nojekyll` makes Pages publish `.well-known`. Verified live with curl.
 
 ## Recurring task
@@ -36,7 +38,7 @@ After every new set import in the app: re-run `exportWebCards.js` in the app rep
 ## Rules
 - Dark/gold trophy-and-cards branding.
 - No straw hat, and no official One Piece art, logos or names.
-- Until the App Store release the site says "Coming soon to iOS", with no App Store link and no Android mention.
+- The site links to the App Store (`https://apps.apple.com/app/id6759857731`), with no Android mention.
 - The trailer goes up at launch, not before.
 - No TestFlight links.
 - Only the publishable/anon key ever goes in `config.js`. Never a secret or `service_role` key.
@@ -45,9 +47,9 @@ After every new set import in the app: re-run `exportWebCards.js` in the app rep
 ## TODO
 - Rich link previews (per-deck OG title/image) need a small server (Supabase Edge Function or Vercel) later.
 - Test universal links on a device once app build 32 is live.
-- At App Store release: replace "Coming soon to iOS" with the App Store link (still no Android mention).
+- Merge PR #11 once v1.0 is live on the App Store.
 - At launch: add the trailer to the site.
-- Check the waitlist success message in a browser after the TestFlight removal.
+- After launch: on an iPhone, check that the Smart App Banner appears on the homepage and a deck page, and see where its Open button lands.
 - Review the old `feature/*` and `fix/mailchimp-jsonp` branches on the remote and delete any that are already merged.
 
 ## Known issues
@@ -58,3 +60,4 @@ After every new set import in the app: re-run `exportWebCards.js` in the app rep
 - 2026-11-23: Removed all TestFlight links and mentions from the site.
 - 2026-11-23: Deleted the already-merged `feature/testflight-button` branch from the remote. Updated the TODO.
 - 2026-11-25: Built deck share pages (PR #9, merged): `/d/<share_id>` via `404.html`, Supabase `get_shared_deck` RPC, `cards.json` lookup, text-only layout with Open in Statpad / Get Statpad / Copy deck list buttons, universal-links AASA file and `.nojekyll`. Details in "Deck share pages". Added the recurring cards.json refresh task and the new TODOs.
+- 2026-11-27: Prepared the App Store launch (PR #11): App Store badge on the homepage and page footers, Smart App Banner, "Get Statpad" pointing to the App Store, new link preview, and OPTCG wording on the homepage.
