@@ -43,18 +43,25 @@ After every new set import in the app: re-run `exportWebCards.js` in the app rep
 - No official One Piece logos or card art anywhere on the site, including the deck pages.
 
 ## TODO
-- Rich link previews (per-deck OG title/image) need a small server (Supabase Edge Function or Vercel) later.
-- Test universal links on a device once app build 32 is live.
-- At App Store release: replace "Coming soon to iOS" with the App Store link (still no Android mention).
+- When v1.0 is live: check that https://apps.apple.com/app/id6759857731 loads, then merge PR #11 (App Store launch). It also edits this file, so resolve any conflict here first.
+- After PR #11 is live: on an iPhone, check that the Smart App Banner appears on the homepage and a deck page, and see where its Open button lands.
+- At App Store release: email the Mailchimp waitlist (the sign-up success message promises it).
 - At launch: add the trailer to the site.
-- Check the waitlist success message in a browser after the TestFlight removal.
+- Link previews: the app repo has a merged Cloudflare Worker for them (`onepiece-tcg-app` PR #88: deck name, leader and colors, with one fixed picture). It is not live yet; follow `cloudflare/link-previews/README.md` there for setup, DNS cutover and testing.
+- Test universal links on a device once app build 32 is live.
+- Check the waitlist success message in a browser after the TestFlight removal (not needed once PR #11 is merged).
 - Review the old `feature/*` and `fix/mailchimp-jsonp` branches on the remote and delete any that are already merged.
 
 ## Known issues
--
+- v1.0 is not on the App Store yet: the link returned 404 on 2026-11-27, so PR #11 is waiting.
+- Shared deck links get no preview in chat apps: `/d/<share_id>` returns HTTP 404 with no preview tags (checked 2026-11-27).
+- In PR #11 (not live yet): the Smart App Banner has no `app-argument`, so its Open button may not open the deck (untested). The banner tag also applies to the normal 404 page.
+- Once the Cloudflare Worker is live, it sets the preview tags on `/`, `/privacy`, `/terms` and deck links (per PR #88), so check it when changing preview tags here.
 
 ## Session log
 - 2026-11-23: Created this project doc.
 - 2026-11-23: Removed all TestFlight links and mentions from the site.
 - 2026-11-23: Deleted the already-merged `feature/testflight-button` branch from the remote. Updated the TODO.
 - 2026-11-25: Built deck share pages (PR #9, merged): `/d/<share_id>` via `404.html`, Supabase `get_shared_deck` RPC, `cards.json` lookup, text-only layout with Open in Statpad / Get Statpad / Copy deck list buttons, universal-links AASA file and `.nojekyll`. Details in "Deck share pages". Added the recurring cards.json refresh task and the new TODOs.
+- 2026-11-27: Opened PR #11 (App Store launch), left unmerged until v1.0 is live: App Store badge on the homepage and page footers, email sign-up and "Coming soon to iOS" removed, static Smart App Banner, "Get Statpad" linking to the App Store, new link-preview image and text, OPTCG wording, one shorter homepage disclaimer, README and project doc updates. Decided to keep "One Piece" in the other pages' disclaimers and in the privacy and terms text. Checked locally in headless Chrome, not on an iPhone.
+- 2026-11-27: Updated the TODO and known issues.
